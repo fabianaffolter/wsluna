@@ -22,11 +22,27 @@ public class Rangierlokomotive {
 				+ s1.toString());
 		System.out.println("In Bahnhof S2 sind vor dem Rangieren: "
 				+ s2.toString());
-		System.out.println("In Bahnhof S2 sind vor dem Rangieren: "
+		System.out.println("In Bahnhof S3 sind vor dem Rangieren: "
 				+ s3.toString());
 		ArrayList<IStack<Character>> tracks = new ArrayList<IStack<Character>>();
 		tracks.add(s1);
 		tracks.add(s2);
-		tracks.add(s3);
+
+		for (IStack<Character> t : tracks) {
+			while (!t.isEmpty())
+				s3.push(t.pop());
+		}
+		System.out.println(s3.toString());
+
+		while (!s3.isEmpty()) {
+			Object o = s3.pop();
+			if ((Character) o == 'A')
+				s1.push((Character) o);
+			else
+				s2.push((Character) o);
+		}
+
+		System.out.println(s1.toString());
+		System.out.println(s2.toString());
 	}
 }
