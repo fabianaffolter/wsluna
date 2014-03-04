@@ -20,6 +20,7 @@ public class stackcalculator {
 		boolean leave = false;
 		IStack<Integer> stack = new Stack<Integer>();
 		char c = 0;
+		int stacksize = 0;
 		int res;
 		StringBuilder str = new StringBuilder();
 
@@ -29,11 +30,19 @@ public class stackcalculator {
 				leave = true;
 			} else if (isValidInput(c)) {
 				if (isOperator(c)) {
-					res = calculate(stack.pop(), stack.top(), c);
-					console.print(c + " " + Integer.toString(res) + " ");
-					stack.push(res);
+					if (stacksize > 1) {
+						res = calculate(stack.pop(), stack.top(), c);
+						stacksize--;
+						console.print(c + " " + Integer.toString(res) + " ");
+						stack.push(res);
+					} else {
+						console.setColor(VT.RED);
+						console.print("Stack size too small.");
+						console.setColor(VT.SILVER);
+					}
 				} else if (c == VT.K_ENTER) {
 					stack.push(Integer.parseInt(str.toString()));
+					++stacksize;
 					str.delete(0, str.length());
 					console.print(" ");
 				} else {
