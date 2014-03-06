@@ -11,19 +11,21 @@ public class PostClient extends Thread {
 
 	@Override
 	public void run() {
-		while (true) {
+		int i = 0;
+		while (i < 1) {
 			try {
 				sleep((int) (Math.random() * 100));
 			} catch (InterruptedException e) {
 			}
-			desk.enqueue(this);
-			System.out.println(getName() + ": eingetreten.");
+			desk.enter();
+			System.out.println(getName() + " entered office\t\t|");
 			try {
-				sleep((int) (Math.random() * 100));
+				sleep((int) (Math.random() * 200));
 			} catch (InterruptedException e) {
 			}
-			System.out.println(getName() + ": ausgetreten.");
-			desk.dequeue();
+			System.out.println("\t\t\t\t|\t\t " + getName() + " left office");
+			desk.leave();
+			++i;
 		}
 	}
 }
