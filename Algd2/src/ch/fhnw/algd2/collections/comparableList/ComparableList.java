@@ -202,15 +202,35 @@ public class ComparableList<E extends Comparable<E>> {
 		}
 	}
 
-	public void mergeS
+	/*
+	 * Sorts the list with the mergesort algorithm
+	 */
+	public void mergeSort() {
+		if (this.size() > 1) {
+			ComparableList<E> leftPart = this.split();
+			leftPart.mergeSort();
+			this.mergeSort();
+			merge(leftPart);
+		}
 	}
 
+	/*
+	 * Merges the list this and other, result is in this
+	 */
 	private void merge(ComparableList<E> other) {
 
 	}
 
+	/*
+	 * Splits this into two parts, returns left side as new list, right side
+	 * stays in this
+	 */
 	private ComparableList<E> split() {
-
-		return null;
+		ComparableList<E> leftPart = new ComparableList<E>();
+		int size = this.size() / 2;
+		for (int i = 0; i < size; ++i) {
+			leftPart.addTail(this.removeHead());
+		}
+		return leftPart;
 	}
 }
