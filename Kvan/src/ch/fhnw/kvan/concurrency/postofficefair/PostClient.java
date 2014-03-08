@@ -23,7 +23,7 @@ public class PostClient extends Thread {
 			desk.enter(myticket);
 			System.out.println(getName() + " entered office\t\t|");
 			desk.anzeigeIter();
-			yield();
+			// yield();
 			try {
 				sleep((int) (Math.random() * 2));
 			} catch (InterruptedException e) {
