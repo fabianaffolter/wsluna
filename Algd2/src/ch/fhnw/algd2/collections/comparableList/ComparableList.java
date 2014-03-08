@@ -196,14 +196,26 @@ public class ComparableList<E extends Comparable<E>> {
 			}
 		}
 
+		/*
+		 * Currently copied from H. Veitschegger (non-Javadoc)
+		 * 
+		 * @see java.util.ListIterator#add(java.lang.Object)
+		 */
 		@Override
 		public void add(E e) {
-			throw new IllegalStateException("Not yet implemented.");
+			Element<E> r = new Element<E>();
+			r.data = e;
+			r.prev = next.prev;
+			r.next = next;
+			next.prev.next = r;
+			next.prev = r;
+			++length;
 		}
 	}
 
 	/*
-	 * Sorts the list with the mergesort algorithm
+	 * Sorts the list with the mergesort algorithm Currently copied from H.
+	 * Veitschegger
 	 */
 	public void mergeSort() {
 		if (this.size() > 1) {
@@ -215,15 +227,42 @@ public class ComparableList<E extends Comparable<E>> {
 	}
 
 	/*
-	 * Merges the list this and other, result is in this
+	 * Merges the list this and other, result is in this Currently copied from
+	 * H. Veitschegger
 	 */
 	private void merge(ComparableList<E> other) {
-
+		CListIterator group1 = this.iterator();
+		CListIterator group2 = other.iterator();
+		CListIterator insert = this.iterator();
+		E element1, element2;
+		while (group1.hasNext() || group2.hasNext()) {
+			if (group1.hasNext() && group2.hasNext()) {
+				element1 = group1.next();
+				element2 = group2.next();
+				if (element1.compareTo(element2) < 0) {
+					insert.add(element1);
+					group2.previous();
+				} else {
+					insert.add(element2);
+					group1.previous();
+				}
+			} else {
+				if (group1.hasNext()) {
+					insert.add(group1.next());
+				} else {
+					insert.add(group2.next());
+				}
+			}
+		}
+		while (insert.hasNext()) {
+			insert.next();
+			insert.remove();
+		}
 	}
 
 	/*
 	 * Splits this into two parts, returns left side as new list, right side
-	 * stays in this
+	 * Currently copied from H. Veitschegger stays in this
 	 */
 	private ComparableList<E> split() {
 		ComparableList<E> leftPart = new ComparableList<E>();
