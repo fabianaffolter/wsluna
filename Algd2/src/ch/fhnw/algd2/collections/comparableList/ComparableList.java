@@ -101,6 +101,9 @@ public class ComparableList<E extends Comparable<E>> {
 		--length;
 	}
 
+	/*
+	 * Must have external constructors thus it's private
+	 */
 	public CListIterator iterator() {
 		return new CListIterator();
 	}
@@ -197,7 +200,9 @@ public class ComparableList<E extends Comparable<E>> {
 		}
 
 		/*
-		 * Currently copied from H. Veitschegger (non-Javadoc)
+		 * Currently copied from H. Veitschegger (non-Javadoc) Inserts param e
+		 * at position of iterator, list itself does not provide an "insert"
+		 * statement
 		 * 
 		 * @see java.util.ListIterator#add(java.lang.Object)
 		 */
@@ -219,7 +224,7 @@ public class ComparableList<E extends Comparable<E>> {
 	 */
 	public void mergeSort() {
 		if (this.size() > 1) {
-			ComparableList<E> leftPart = this.split();
+			ComparableList<E> leftPart = this.split(); // O(n)
 			leftPart.mergeSort();
 			this.mergeSort();
 			merge(leftPart);
@@ -254,6 +259,9 @@ public class ComparableList<E extends Comparable<E>> {
 				}
 			}
 		}
+		// insert is at the end of the while, but the original group still
+		// exists
+		// the loop below deletes the rest of the origin
 		while (insert.hasNext()) {
 			insert.next();
 			insert.remove();
@@ -262,7 +270,7 @@ public class ComparableList<E extends Comparable<E>> {
 
 	/*
 	 * Splits this into two parts, returns left side as new list, right side
-	 * Currently copied from H. Veitschegger stays in this
+	 * O(n) Currently copied from H. Veitschegger stays in this
 	 */
 	private ComparableList<E> split() {
 		ComparableList<E> leftPart = new ComparableList<E>();
