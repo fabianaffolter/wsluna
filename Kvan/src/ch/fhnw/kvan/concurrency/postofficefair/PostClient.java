@@ -13,7 +13,7 @@ public class PostClient extends Thread {
 	@Override
 	public void run() {
 		int i = 0;
-		while (i < 1) {
+		while (i < 3) {
 			myticket = desk.getTicket();
 			try {
 				sleep((int) (Math.random() * 1));
@@ -21,7 +21,8 @@ public class PostClient extends Thread {
 			}
 			// desk.enqueue(this);
 			desk.enter(myticket);
-			System.out.println(getName() + " entered office\t\t|");
+			System.out.println(getName() + " entered office (" + myticket
+					+ ")\t|");
 			desk.anzeigeIter();
 			// yield();
 			try {
