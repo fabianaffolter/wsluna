@@ -12,17 +12,17 @@ import org.apache.log4j.Logger;
 
 /**
  * The ChatRoom forwards all requests from clients to either the Participants or
- * the Chats class, which store/manage the participant names or respectively the current
- * topics and messages concerning those topics.
+ * the Chats class, which store/manage the participant names or respectively the
+ * current topics and messages concerning those topics.
  * 
  * @see ChatRoom
- * @author © ibneco, Rheinfelden
+ * @author ï¿½ ibneco, Rheinfelden
  * @version
  */
 public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 	private final Participants participantInfo = new Participants();
 	private final Chats chatInfo = new Chats();
-	
+
 	// To ensure singleton behaviour
 	private static ChatRoom chatRoomInstance = null;
 
@@ -37,14 +37,11 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 		return chatRoomInstance;
 	}
 
-	
-
 	@Override
 	public boolean addParticipant(String name) throws IOException {
 		if (!name.trim().equalsIgnoreCase("")) {
 			return participantInfo.addParticipant(name);
-		} 
-		else {
+		} else {
 			return false;
 		}
 	}
@@ -53,17 +50,15 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 	public boolean removeParticipant(String name) throws IOException {
 		if (!name.trim().equalsIgnoreCase("")) {
 			return participantInfo.removeParticipant(name);
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
 
 	public String getParticipants() throws IOException {
 		if (!participantInfo.getParticipants().equalsIgnoreCase("")) {
-		return participantInfo.getParticipants();
-		}
-		else {
+			return participantInfo.getParticipants();
+		} else {
 			return ("participants=");
 		}
 	}
@@ -72,8 +67,7 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 	public boolean addTopic(String topic) throws IOException {
 		if (!topic.trim().equalsIgnoreCase("")) {
 			return chatInfo.addTopic(topic);
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
@@ -82,8 +76,7 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 	public boolean removeTopic(String topic) throws IOException {
 		if (!topic.trim().equalsIgnoreCase("")) {
 			return chatInfo.removeTopic(topic);
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
@@ -91,18 +84,17 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 	public String getTopics() throws IOException {
 		if (!chatInfo.getTopics().equalsIgnoreCase("")) {
 			return chatInfo.getTopics();
-		}
-		else {
+		} else {
 			return ("topics=");
 		}
 	}
 
 	@Override
 	public boolean addMessage(String topic, String message) throws IOException {
-		if (!topic.trim().equalsIgnoreCase("") && !message.trim().equalsIgnoreCase("")) {
+		if (!topic.trim().equalsIgnoreCase("")
+				&& !message.trim().equalsIgnoreCase("")) {
 			return chatInfo.addMessage(topic, message);
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
@@ -111,8 +103,7 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 	public String getMessages(String topic) throws IOException {
 		if (!topic.trim().equalsIgnoreCase("")) {
 			return chatInfo.getMessages(topic);
-		}
-		else {
+		} else {
 			return ("messages=");
 		}
 	}
@@ -121,8 +112,7 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 	public String refresh(String topic) throws IOException {
 		if (!topic.trim().equalsIgnoreCase("")) {
 			return chatInfo.getMessages(topic);
-		}
-		else {
+		} else {
 			return ("messages=");
 		}
 	}
@@ -135,7 +125,7 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 	 * list.
 	 * 
 	 * @see Participants
-	 * @author © ibneco, Rheinfelden
+	 * @author ï¿½ ibneco, Rheinfelden
 	 * @version
 	 */
 
@@ -205,12 +195,12 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 
 	/**
 	 * The Chats stores and manages all topics and incoming messages regarding
-	 * those topics. It adds/removes topics, saves messages, retrieves the
-	 * last ten messages on a given topic, and in case that a complete refresh
-	 * is requested: it retrieves the last ten messages and the topic list as well.
+	 * those topics. It adds/removes topics, saves messages, retrieves the last
+	 * ten messages on a given topic, and in case that a complete refresh is
+	 * requested: it retrieves the last ten messages and the topic list as well.
 	 * 
 	 * @see Chats
-	 * @author © ibneco, Rheinfelden
+	 * @author ï¿½ ibneco, Rheinfelden
 	 * @version
 	 */
 	private class Chats implements ch.fhnw.kvan.chat.IChats {
@@ -273,8 +263,8 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 				topicString = topics.toString();
 
 				return true;
-			} 
-            return false;
+			}
+			return false;
 		}
 
 		@Override

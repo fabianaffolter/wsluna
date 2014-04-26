@@ -25,7 +25,7 @@ import org.apache.log4j.Logger;
  * ch.fhnw.kvan.chat.servlet.Client localhost:8080/chat/Server <user name>
  * </pre>
  * 
- * @see Client
+ * @see ClientOld
  * @author � ibneco, Rheinfelden; based on code by Dominik Gruntz
  * @version
  */
