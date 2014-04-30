@@ -140,13 +140,17 @@ public class ConnectionHandler extends Thread {
 	 * The methods getMessage() and setMessage() are synchronized so that the
 	 * thread in Connection doesn't call setMessage() while the
 	 * ConnectionListener thread is calling getMessage().
+	 * 
+	 * @throws InterruptedException
 	 *********************************************************************/
-	public synchronized String getMessage() {
+	public synchronized String getMessage() throws InterruptedException {
+		wait();
 		return message;
 	}
 
 	private synchronized void setMessage(String s) {
 		message = s;
+		notifyAll();
 	}
 
 	private boolean addTopic(String s) {
