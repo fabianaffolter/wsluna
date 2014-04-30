@@ -144,13 +144,13 @@ public class ConnectionHandler extends Thread {
 	 * @throws InterruptedException
 	 *********************************************************************/
 	public synchronized String getMessage() throws InterruptedException {
-		wait();
-		return message;
+		String local = this.message;
+		this.message = null;
+		return local;
 	}
 
 	private synchronized void setMessage(String s) {
 		message = s;
-		notifyAll();
 	}
 
 	private boolean addTopic(String s) {
