@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 
 public class ConnectionListener implements Runnable {
 
+	// Deploy 1.0 for C.U.N. kvanC (just another commit)
 	private CopyOnWriteArrayList<ConnectionHandler> conns = new CopyOnWriteArrayList<ConnectionHandler>();
 	static Logger logger;
 	String msg;
