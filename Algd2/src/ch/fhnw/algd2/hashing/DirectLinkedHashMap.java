@@ -11,6 +11,7 @@ public class DirectLinkedHashMap<T> implements HashMap<T> {
 	@SuppressWarnings("unchecked")
 	public DirectLinkedHashMap(int size) {
 		this.m = size;
+		this.n = 0;
 		this.hashTable = new LinkedList[this.m];
 	}
 
@@ -26,18 +27,19 @@ public class DirectLinkedHashMap<T> implements HashMap<T> {
 
 	@Override
 	public T get(int key) {
+		return getElement(key).data;
+	}
+
+	private Element getElement(int key) {
 		LinkedList<Element> pos = hashTable[h(key)];
 		if (pos == null)
 			return null;
-		T n = null;
+		Element n = null;
 		for (Element r : pos) {
 			if (r.key == key)
-				n = r.data;
+				n = r;
 		}
-		if (n != null)
-			return n;
-		else
-			return null;
+		return n != null ? n : null;
 	}
 
 	@Override
@@ -54,9 +56,10 @@ public class DirectLinkedHashMap<T> implements HashMap<T> {
 	@Override
 	public void remove(int key) {
 		LinkedList<Element> pos = hashTable[h(key)];
-		if (pos != null)
-			pos.remove(get(key));
-		n--;
+		if (pos != null) {
+			pos.remove(getElement(key));
+			n--;
+		}
 	}
 
 	private class Element {
@@ -107,6 +110,12 @@ public class DirectLinkedHashMap<T> implements HashMap<T> {
 		System.out.println(table);
 		table.remove(1);
 		System.out.println(table);
+		System.out.println(table.getLoad());
+	}
+
+	public double getLoad() {
+		double r = n;
+		return r / m;
 	}
 
 }
