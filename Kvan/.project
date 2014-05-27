@@ -23,7 +23,7 @@
 		<link>
 			<name>src/ch/fhnw/kvan/internet/servlet/EchoServlet.java</name>
 			<type>1</type>
-			<locationURI>PARENT-4-PROJECT_LOC/apache/apache-tomcat-8.0.5/webapps/echo/WEB-INF/classes/ch/fhnw/kvan/internet/servlet/EchoServlet.java</locationURI>
+			<locationURI>PARENT-5-PROJECT_LOC/media/apache/apache-tomcat-8.0.5/webapps/echo/WEB-INF/classes/ch/fhnw/kvan/internet/servlet/EchoServlet.java</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
