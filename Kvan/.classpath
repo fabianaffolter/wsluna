@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="chat"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 7 [1.7.0_51]"/>
-	<classpathentry kind="lib" path="/Users/jochileu/Documents/FHNW/kvanC/ChatRoomPrj_Meyer-Leu/src/ch/fhnw/kvan/chat/utils/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="/Users/jochileu/Documents/FHNW/tomcat8/lib/servlet-api.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 7 [1.7.0_07]"/>
+	<classpathentry kind="lib" path="/Volumes/Data/fhnw/jar/apache-log4j-1.2.17/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="/Volumes/Data/media/apache/apache-tomcat-8.0.5/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
