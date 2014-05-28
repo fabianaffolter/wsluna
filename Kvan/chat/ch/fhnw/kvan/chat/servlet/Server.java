@@ -1,4 +1,4 @@
-package ch.fhnw.kvan.chat.servlet.server;
+package ch.fhnw.kvan.chat.servlet;
 
 import javax.servlet.http.HttpServlet;
 
