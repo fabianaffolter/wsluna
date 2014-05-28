@@ -48,11 +48,13 @@ public abstract class OpenHashMap<T> implements HashMap<T> {
 
 	@Override
 	public void put(int key, T data) {
+		Element r = new Element(key, data);
+
 	}
 
 	@Override
 	public void remove(int key) {
-
+		find(key).state = State.DELETED;
 	}
 
 	private class Element {
