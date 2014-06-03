@@ -28,10 +28,7 @@ public class Server extends HttpServlet {
 	
 	public static void main(String args[]) throws IOException {
 		int port = 1235;
-		crd.connect("localhost", port);
-		
-		crd.getChatRoom().addParticipant("Chibi");
-		
+		crd.connect("localhost", port);		
 		}
 	
 
