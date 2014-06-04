@@ -117,6 +117,19 @@ public class ChatRoom implements ch.fhnw.kvan.chat.IChatRoom {
 		}
 	}
 
+	public String getParticipantsAsString() {
+		return participantInfo.getParticipants();
+	}
+
+	public String getTopicsAsString() {
+		try {
+			return getTopics();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	/**
 	 * The Participants stores and manages all participants. It adds/removes
 	 * participant names as they are joining or leaving the chat room in an

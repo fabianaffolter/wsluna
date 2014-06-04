@@ -8,17 +8,17 @@ import java.io.IOException;
 
 /**
  * The ChatRoom interface defines the functionality of a chat room server. The
- * chat room can add/remove topics and participants, receives and saves messages, 
- * gets the last ten messages on a given topic or gets the information for a complete refresh; 
- * i.e.gets the last ten messages on a given topic as well as the current lists of participants and 
- * topics from the chat room.
+ * chat room can add/remove topics and participants, receives and saves
+ * messages, gets the last ten messages on a given topic or gets the information
+ * for a complete refresh; i.e.gets the last ten messages on a given topic as
+ * well as the current lists of participants and topics from the chat room.
  * 
  * @see IChatRoom
- * @author © ibneco, Rheinfelden
+ * @author ï¿½ ibneco, Rheinfelden
  * @version
  */
 public interface IChatRoom {
-	
+
 	/**
 	 * Add a participant who joined the chat room.
 	 * 
@@ -58,10 +58,10 @@ public interface IChatRoom {
 	 *             if a remote or communication problem occurs
 	 */
 	public boolean removeTopic(String topic) throws IOException;
-	
+
 	/**
-	 * Saves/Sends a message to the chat room.
-	 * Server saves the message; Client sends the message.
+	 * Saves/Sends a message to the chat room. Server saves the message; Client
+	 * sends the message.
 	 * 
 	 * @param topic
 	 *            The string defining the topic
@@ -77,23 +77,26 @@ public interface IChatRoom {
 	 * 
 	 * @param topic
 	 *            The string defining the topic
-	 * @returns String
-	 *            Last ten messages on that topic
+	 * @returns String Last ten messages on that topic
 	 * @throws IOException
 	 *             if a remote or communication problem occurs
 	 */
 	public String getMessages(String topic) throws IOException;
-	
+
 	/**
-	 * Refresh last ten messages from the chat room; refresh participants and topics, too.
+	 * Refresh last ten messages from the chat room; refresh participants and
+	 * topics, too.
 	 * 
 	 * @param topic
 	 *            The string defining the current topic
-	 * @returns String
-	 *            Last ten messages on that topic
+	 * @returns String Last ten messages on that topic
 	 * @throws IOException
 	 *             if a remote or communication problem occurs
 	 */
 	public String refresh(String topic) throws IOException;
+
+	// public String getParticipantsAsString();
+	//
+	// public String getTopicsAsString();
 
 }
