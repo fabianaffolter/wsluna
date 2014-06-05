@@ -62,28 +62,34 @@ public class Server extends HttpServlet {
 		} else {
 			System.out.println("Refresh!!!!! ------ - - -- - - - - - - - -  -");
 			String topic = "";
+			// if (params[0].equalsIgnoreCase(""))
 			topic = params[0];
+			// else {
+			// String[] alltopics = ((ChatRoom) crd.getChatRoom()).getTopics();
+			// topic = alltopics[0];
+			// }
 			sOut = response.getOutputStream();
-			if (!topic.equalsIgnoreCase("")) {
-				String messages = crd.getChatRoom().refresh(topic) + "\r\n";
-				if (!messages.equalsIgnoreCase("")) {
-					System.out.println("writing messages: " + messages);
-					byteOut.write(messages.getBytes());
-					byte[] msgs = byteOut.toByteArray();
-					sOut.write(msgs);
-				}
+			String messages = crd.getChatRoom().refresh(topic) + "\r\n";
+			if (!messages.equalsIgnoreCase("")) {
+				System.out.println("writing messages: " + messages);
+				// byteOut.write(messages.getBytes());
+				byte[] msgs = messages.getBytes();
+				System.out.println(new String(msgs));
+				sOut.write(msgs);
 			}
 			String participants = ((ChatRoom) crd.getChatRoom())
 					.getParticipants() + "\r\n";
 			System.out.println("writing participants: " + participants);
-			byteOut.write(participants.getBytes());
-			byte[] msgs = byteOut.toByteArray();
+			// byteOut.write(participants.getBytes());
+			byte[] msgs = participants.getBytes();
+			System.out.println(new String(msgs));
 			sOut.write(msgs);
 			sOut.flush();
 			String topics = ((ChatRoom) crd.getChatRoom()).getTopics() + "\r\n";
 			System.out.println("writing topics: " + topics);
-			byteOut.write(topics.getBytes());
-			msgs = byteOut.toByteArray();
+			// byteOut.write(topics.getBytes());
+			msgs = topics.getBytes();
+			System.out.println(new String(msgs));
 			sOut.write(msgs);
 			sOut.close();
 		}
